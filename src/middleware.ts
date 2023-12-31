@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
     if (!headersToken) {
-      return NextResponse.redirect(`http://localhost:3000/login`);
+      return NextResponse.redirect(`${process.env.API_BASE_URL}/login`);
     }
     const verifyToken = await jwtVerify(
       headersToken,
