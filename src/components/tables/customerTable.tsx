@@ -3,9 +3,8 @@ import React from "react";
 
 
 export default async function CustomerTable() {
-  const res = await fetch("/api/user/", {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/user/`, {
     method: "GET",
-    cache: "no-cache",
   });
   const data = await res.json();
 return (

@@ -8,7 +8,7 @@ export default async function Page({params}:{params:{slug:string}}) {
     cache: "no-cache",
   });
   const userdata = await res.json();
-  const resp = await fetch(`/complaints//${params.slug}`,{
+  const resp = await fetch(`/complaints/${params.slug}`,{
       method: "GET",
       cache: "no-cache",
     }

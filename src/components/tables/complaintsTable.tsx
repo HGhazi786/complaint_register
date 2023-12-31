@@ -3,13 +3,12 @@ import Link from 'next/link';
 import React from 'react'
 
 export default async function ComplientTable() {
-  const res = await fetch("/api/complaints/", {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/complaints/`, {
     method: "GET",
-    cache: "no-cache",
   });
   const data = await res.json();
   return (
-    <div className="relative rounded-xl bg-clip-border flex flex-col w-full h-full overflow-x-auto scroll-smooth">
+    <div className="rounded-xl bg-clip-border flex flex-col w-full h-full overflow-x-auto scroll-smooth">
       <table className="w-full text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100">
           <tr>
