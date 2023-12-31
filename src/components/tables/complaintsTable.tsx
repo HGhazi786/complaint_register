@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 
 export default async function ComplientTable() {
-  const res = await fetch("http://localhost:3000/api/complaints/", {
+  const res = await fetch("/api/complaints/", {
     method: "GET",
     cache: "no-cache",
   });

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default async function Page({ params }: { params: { query: string } }) {
-  const res = await fetch("http://localhost:3000/api/user/", {
+  const res = await fetch("/api/user/", {
     method: "GET",
     cache: "no-cache",
   });

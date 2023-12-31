@@ -3,12 +3,12 @@ import UserCard from '@/components/shared/userCard';
 import React from 'react'
 
 export default async function Page({params}:{params:{slug:string}}) {
-  const res = await fetch(`http://localhost:3000/api/user/${params.slug}`, {
+  const res = await fetch(`/api/user/${params.slug}`, {
     method: "GET",
     cache: "no-cache",
   });
   const userdata = await res.json();
-  const resp = await fetch(`http://localhost:3000/api/complaints//${params.slug}`,{
+  const resp = await fetch(`/complaints//${params.slug}`,{
       method: "GET",
       cache: "no-cache",
     }
