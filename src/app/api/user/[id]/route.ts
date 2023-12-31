@@ -3,7 +3,7 @@ import { db, clientTable } from "@/lib/drizzle";
 import { eq, and } from "drizzle-orm";
 import { timeStamp } from "console";
 
-export const GET = async ({ params }: { params: { id: string } }) => {
+export const GET = async (request:NextRequest,{ params }: { params: { id: string } }) => {
   try {
     const mid = Number(params.id);
     const res = await db

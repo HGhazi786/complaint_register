@@ -1,4 +1,5 @@
 import { boolean } from 'drizzle-orm/mysql-core';
+import Link from 'next/link';
 import React from 'react'
 
 export default async function ComplientTable() {
@@ -7,7 +8,6 @@ export default async function ComplientTable() {
     cache: "no-cache",
   });
   const data = await res.json();
-
   return (
     <div className="relative rounded-xl bg-clip-border flex flex-col w-full h-full overflow-x-auto scroll-smooth">
       <table className="w-full text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
@@ -28,28 +28,35 @@ export default async function ComplientTable() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: any) => (
-            <tr className=" border-b bg-glassmorphism border-gray-700 hover:bg-gray-600">
-              <th
-                scope="row"
-                className="flex items-center px-6 py-4 whitespace-nowrap text-white"
-              >
-                <div className="ps-3">
-                  <div className="text-base font-semibold">{item.username}</div>
-                </div>
-              </th>
-              <td className="px-6 py-4">{item.title}</td>
-              <td className="px-6 py-4">
-                <Status status={item.status} />
-              </td>
-              <td className="px-6 py-4">
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          {data.map((item: complaaint) => (
+            <tr
+              className=" border-b bg-glassmorphism border-gray-700 hover:bg-gray-200"
+              key={item.complaint_id}
+            >
+              <Link href={`/customer/${item.user_id}`}>
+                <th
+                  scope="row"
+                  className="flex items-center px-6 py-4 whitespace-nowrap text-white"
                 >
-                  Edit user
-                </a>
-              </td>
+                  <div className="ps-3">
+                    <div className="text-base font-semibold">
+                      {item.user_id}
+                    </div>
+                  </div>
+                </th>
+                <td className="px-6 py-4">{item.title}</td>
+                <td className="px-6 py-4">
+                  <Status status={item.status} />
+                </td>
+                <td className="px-6 py-4">
+                  <a
+                    href="#"
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Edit user
+                  </a>
+                </td>
+              </Link>
             </tr>
           ))}
         </tbody>

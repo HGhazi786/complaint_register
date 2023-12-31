@@ -62,19 +62,3 @@ export const PUT = async (request: NextRequest) => {
     return NextResponse.json({ message: "Something went wrong" });
   }
 };
-
-export const DELETE = async (request: NextRequest) => {
-  const req = await request.json();
-
-  try {
-    const res = await db
-      .delete(complaintTable)
-      .where(eq(complaintTable.complaint_id, req.complaint_id))
-      .returning();
-
-    return NextResponse.json({ res });
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json({ message: "Something went wrong" });
-  }
-};

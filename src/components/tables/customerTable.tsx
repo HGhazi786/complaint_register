@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 
@@ -27,11 +28,12 @@ return (
         </tr>
       </thead>
       <tbody className="glassmorphism">
-        {data.map((item: any) => (
+        {data.map((item: clieent) => (
           <tr
             key={item.user_id}
             className=" border-b border-gray-700 rounded-3xl hover:bg-gray-600"
           >
+            <Link href={`/customer/${item.user_id}`}></Link>
             <th
               scope="row"
               className="flex items-center px-6 py-4 whitespace-nowrap text-white"
@@ -44,7 +46,7 @@ return (
             <td className="px-6 py-4">{item.system_size}</td>
             <td className="px-6 py-4">
               <div className="flex items-center">
-                {item.date_of_installation}
+                {String(item.date_of_installation)}
               </div>
             </td>
             <td className="px-6 py-4">

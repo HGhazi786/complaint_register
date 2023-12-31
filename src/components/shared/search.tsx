@@ -37,7 +37,7 @@ let path
             onChange={handleInputChange}
           />
         </form>
-        <Link href={`/search/${searchQuery}`} className="text-lg bg-black text-white py-1 px-2 rounded-r-full">
+        <Link href={`/search/${searchQuery}`} className="text-lg bg-black text-white py-2 px-2 rounded-r-full">
           <FaSearch />
         </Link>
     </div>

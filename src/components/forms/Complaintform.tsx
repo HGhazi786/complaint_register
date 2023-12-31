@@ -30,30 +30,35 @@ function ComplaintForm() {
   };
 
   return (
-    <form className="px-10" onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-72">
-        <label htmlFor="user_id">User ID:</label>
-        <input
-          type="number"
-          id="user_id"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
-          {...register("user_id", { required: true })}
-        />
-      </div>
-      <div className="block font-medium">
-        <label>Title:</label>
-        <input
-          type="text"
-          id="title"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
-          {...register("title", { required: true })}
-        />
+    <form
+      className="p-10 rounded-3xl glassmorphism shadow-2xl"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className="flex justify-between space-x-2">
+        <div className="w-72">
+          <label htmlFor="user_id">User ID:</label>
+          <input
+            type="number"
+            id="user_id"
+            className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 focus:outline-none focus:ring-none block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+            {...register("user_id", { required: true })}
+          />
+        </div>
+        <div className="block font-medium">
+          <label>Title:</label>
+          <input
+            type="text"
+            id="title"
+            className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown focus:outline-none focus:ring-none bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+            {...register("title", { required: true })}
+          />
+        </div>
       </div>
       <div>
         <label>Description:</label>
         <textarea
           id="description"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
           {...register("description", { required: true })}
         />
       </div>
