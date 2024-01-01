@@ -1,19 +1,19 @@
-import { boolean } from 'drizzle-orm/mysql-core';
+import { getComplaints} from '@/lib/actions';
 import Link from 'next/link';
 import React from 'react'
+import { DeleteComplaint } from '../shared/deleteEntry';
 
 export default async function ComplientTable() {
-  const res = await fetch(`${process.env.API_BASE_URL}/api/complaints/`, {
-    method: "GET",
-  });
-  const data = await res.json();
+  const res = await getComplaints()
+  console.log(res)
+  const data = res
   return (
-    <div className="rounded-xl bg-clip-border flex flex-col w-full h-full overflow-x-auto scroll-smooth">
+    <div className="rounded-3xl relative bg-clip-border flex flex-col w-full h-full">
       <table className="w-full text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100">
           <tr>
             <th scope="col" className="px-6 py-3">
-              userId
+              user Id
             </th>
             <th scope="col" className="px-6 py-3">
               Title
@@ -22,20 +22,24 @@ export default async function ComplientTable() {
               Status
             </th>
             <th scope="col" className="px-6 py-3">
+              Details
+            </th>
+            <th scope="col" className="px-6 py-3">
               Delete
             </th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item: complaaint) => (
-            <tr
-              className=" border-b bg-glassmorphism border-gray-700 hover:bg-gray-200"
-              key={item.complaint_id}
-            >
-              <Link href={`/customer/${item.user_id}`}>
+          {
+            // @ts-ignore
+            data?.map((item: complaaint) => (
+              <tr
+                className=" border-b bg-glassmorphism border-gray-700 hover:bg-gray-200"
+                key={item.complaint_id}
+              >
                 <th
                   scope="row"
-                  className="flex items-center px-6 py-4 whitespace-nowrap text-white"
+                  className="flex items-center px-6 py-4 whitespace-nowrap text-black"
                 >
                   <div className="ps-3">
                     <div className="text-base font-semibold">
@@ -48,16 +52,19 @@ export default async function ComplientTable() {
                   <Status status={item.status} />
                 </td>
                 <td className="px-6 py-4">
-                  <a
-                    href="#"
+                  <Link
+                    href={`/customer/${item.user_id}`}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
-                    Edit user
-                  </a>
+                    View Details
+                  </Link>
                 </td>
-              </Link>
-            </tr>
-          ))}
+                <td className="px-6 py-4">
+                  <DeleteComplaint _id={item.user_id}/>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>

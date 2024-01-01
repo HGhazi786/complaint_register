@@ -13,6 +13,9 @@ const SideBar = () => {
   return (
     <section className="custom-scrollbar rounded-3xl m-4 leftsidebar">
       <div className="flex w-full flex-1 flex-col gap-6 px-6">
+        <h1 className="text-heading1-bold flex justify-center mb-10 text-black">
+          CompliX
+        </h1>
         {sidebarLinks.map((link) => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
@@ -21,7 +24,7 @@ const SideBar = () => {
             <Link
               href={link.route}
               key={link.label}
-              className={`leftsidebar_link ${isActive && "bg-blue"}`}
+              className={`leftsidebar_link ${isActive && "bg-emerald-400"}`}
             >
               <Image
                 src={link.imgURL}

@@ -1,4 +1,3 @@
-//new complaint icon new user icon
 export const sidebarLinks = [
   {
     imgURL: "/assets/home.svg",
@@ -9,11 +8,6 @@ export const sidebarLinks = [
     imgURL: "/assets/feedback-negative.svg",
     route: "/complaints",
     label: "Complaints",
-  },
-  {
-    imgURL: "/assets/feedback.svg",
-    route: "/createComplaint",
-    label: "Create Complaint",
   },
   {
     imgURL: "/assets/community.svg",

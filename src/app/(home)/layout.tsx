@@ -19,13 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white">
-        <SideBar/>
-        <SearchComponent/>
-        <main className="flex flex-row">
-          {children}
-        </main>
-        <Footer/>
+      <body className="bg-white max-w-[1920] max-h-screen">
+        <SearchComponent />
+        <div className="flex">
+          <SideBar />
+          <main className="flex flex-col justify-center items-center">{children}</main>
+        </div>
+        <Footer />
       </body>
     </html>
   );

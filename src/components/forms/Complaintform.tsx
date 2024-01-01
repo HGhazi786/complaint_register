@@ -3,7 +3,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-function ComplaintForm() {
+interface mid{
+  _id:number
+}
+
+function ComplaintForm(props:mid) {
   const {
     register,
     handleSubmit,
@@ -34,14 +38,15 @@ function ComplaintForm() {
       className="p-10 rounded-3xl glassmorphism shadow-2xl"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex justify-between space-x-2">
-        <div className="w-72">
+      <div className="lg:flex xl:flex md:flex justify-between space-x-2">
+        <div className="w-36">
           <label htmlFor="user_id">User ID:</label>
           <input
             type="number"
             id="user_id"
             className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 focus:outline-none focus:ring-none block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
             {...register("user_id", { required: true })}
+            value={props._id}
           />
         </div>
         <div className="block font-medium">

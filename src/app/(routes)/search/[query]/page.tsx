@@ -1,20 +1,20 @@
+import { getUser } from '@/lib/actions';
+import Link from 'next/link';
 import React from 'react'
 
 export default async function Page({ params }: { params: { query: string } }) {
-  const res = await fetch("/api/user/", {
-    method: "GET",
-    cache: "no-cache",
-  });
+  const res = await getUser()
 
   function filterByUsername(data:any, username:string) {
     return data.filter((item: any) => item.username.toLowerCase() === username);
 }
 
   const name= params.query
-  const raw = await res.json();
+  const raw = res;
   const data = filterByUsername(raw, name.toLowerCase());
+  
   return (
-    <div className="relative my-28 rounded-xl bg-clip-border flex flex-col w-full h-full overflow-x-auto scroll-smooth">
+    <div className="relative my-28 rounded-xl bg-clip-border flex flex-col w-full h-full">
       <table className="shadow-2xl shadow-gray-200 z-50 text-sm w-full text-left rtl:text-right text-gray-800 min-w-max">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl">
           <tr>
@@ -52,16 +52,16 @@ export default async function Page({ params }: { params: { query: string } }) {
               <td className="px-6 py-4">{item.system_size}</td>
               <td className="px-6 py-4">
                 <div className="flex items-center">
-                  {item.date_of_installation}
+                  {String(item.date_of_installation)}
                 </div>
               </td>
               <td className="px-6 py-4">
-                <a
-                  href="#"
+                <Link
+                  href={`/customer/${item.user_id}`}
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  Edit user
-                </a>
+                  View Detail
+                </Link>
               </td>
             </tr>
           ))}

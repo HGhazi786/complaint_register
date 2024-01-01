@@ -36,7 +36,7 @@ function UserForm() {
       className="p-10 rounded-3xl glassmorphism shadow-2xl"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex justify-between space-x-2">
+      <div className="sm:flex md:flex xl:flex lg:flex justify-between space-x-2">
         <div className="block font-medium">
           <label>User Name:</label>
           <input

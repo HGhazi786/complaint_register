@@ -1,23 +1,19 @@
 import ComplaintCard from '@/components/shared/complaintCard'
 import UserCard from '@/components/shared/userCard';
+import { getSpecificComplaint, getSpecificUser } from '@/lib/actions';
 import React from 'react'
 
 export default async function Page({params}:{params:{slug:string}}) {
-  const res = await fetch(`/api/user/${params.slug}`, {
-    method: "GET",
-    cache: "no-cache",
-  });
-  const userdata = await res.json();
-  const resp = await fetch(`/complaints/${params.slug}`,{
-      method: "GET",
-      cache: "no-cache",
-    }
-  );
-  const complaintData = await resp.json();
+  const res = await getSpecificComplaint(Number(params.slug))
+  const complaintData = res
+ const resp = await getSpecificUser(Number(params.slug))
+  const userData = resp;
   return (
-    <div className="grid grid-cols-3 m-auto gap-10">
-      <h2 className="text-7xl font-extrabold">User Information</h2>
-      {userdata.map((item: clieent) => (
+    <div className="flex justify-between flex-col">
+      <h2 className="text-heading2-bold">User Information</h2>
+      {
+      // @ts-ignore
+      userData?.map((item: clieent) => (
         <UserCard
           key={item.user_id}
           id={item.user_id}
@@ -28,9 +24,11 @@ export default async function Page({params}:{params:{slug:string}}) {
           date_of_installation={item.date_of_installation}
         />
       ))}
-      <h2 className="text-7xl font-extrabold">Complaints</h2>
+      <h2 className="text-heading2-bold">Complaints</h2>
       <div className="grid grid-cols-3 m-auto gap-10">
-        {complaintData.map((item: complaaint) => (
+        {
+        // @ts-ignore
+        complaintData?.map((item: complaaint) => (
           <ComplaintCard
             key={item.complaint_id}
             title={item.title}

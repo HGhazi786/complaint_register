@@ -11,14 +11,11 @@ export default function ComplaintCard(props:complaint) {
   return (
     <div className="text-black flex flex-col w-[300px] justify-between shadow-2xl p-5 rounded-3xl glassmorphism">
       <div className="flex justify-between">
-        <p className="text-heading3-bold">Title</p>
-        <p className="text-body-medium">12</p>
+        <p className="text-heading3-bold">{props.title}</p>
+        <p className="text-body-medium">{props.complaintId}</p>
       </div>
       <p className="text-gray-600 text-base-medium">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius similique
-        numquam dolorum ullam aperiam excepturi commodi obcaecati optio
-        praesentium ea fugiat cumque, illo omnis deleniti error libero non,
-        eligendi provident!
+        {props.desc}
       </p>
       <div className=" flex justify-between rounded-full">
         {props.status ? (

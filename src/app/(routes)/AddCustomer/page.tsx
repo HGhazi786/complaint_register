@@ -3,7 +3,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="m-auto">
+    <div className="my-32 mx-auto">
       <UserForm />
     </div>
   );

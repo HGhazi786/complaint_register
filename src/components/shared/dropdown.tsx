@@ -37,15 +37,10 @@ const DropdownMenu = () => {
 
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <button
-        className={`focus:outline-none un ${
-          isLinkActive("/search")
-            ? "font-bold underline underline-offset-8"
-            : "font-normal"
-        }`}
-        onClick={toggleMenu}
-      >
+        className={`focus:outline-none bg-gray-900 rounded-full px-2 py-1 text-white`}
+>
         By Date
       </button>
       {isOpen && (
