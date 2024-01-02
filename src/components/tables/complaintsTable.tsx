@@ -8,7 +8,7 @@ export default async function ComplientTable() {
   
   const data = res
   return (
-    <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl w-[900px]">
+    <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl overflow-x-scroll">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -53,13 +53,10 @@ export default async function ComplientTable() {
                 <td className="px-6 py-4">
                   <Link
                     href={`/customer/${item.user_id}`}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className="font-medium hover:underline px-4 py-2"
                   >
                     View Details
                   </Link>
-                </td>
-                <td className="px-6 py-4">
-                  <DeleteComplaint _id={item.user_id}/>
                 </td>
               </tr>
             ))

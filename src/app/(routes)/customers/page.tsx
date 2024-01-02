@@ -4,11 +4,11 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className="my-28 flex flex-col justify-between">
+    <div className="">
       <h2 className="text-heading1-bold font-extrabold mb-5 text-center">
         Customers
       </h2>
-      <div className="overflow-x-scroll shadow-2xl shadow-gray-200 rounded-3xl">
+      <div className="shadow-2xl shadow-gray-200 rounded-3xl">
         <CustomerTable />
       </div>
     </div>

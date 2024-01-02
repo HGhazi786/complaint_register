@@ -6,7 +6,7 @@ import React from 'react'
 export default async function Page({params}:{params:{slug:string}}) {
   const res = await getSpecificComplaint(Number(params.slug))
   const complaintData = res
- const resp = await getSpecificUser(Number(params.slug))
+  const resp = await getSpecificUser(Number(params.slug))
   const userData = resp;
   return (
     <div className="flex justify-between flex-col">
@@ -36,7 +36,8 @@ export default async function Page({params}:{params:{slug:string}}) {
             status={item.status}
             desc={item.description}
           />
-        ))}
+        ))
+        }
       </div>
     </div>
   );

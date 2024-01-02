@@ -27,7 +27,7 @@ let path
     path=searchQuery
   }
   return (
-    <div className="absolute top-10 left-1/2 flex">
+    <div className="absolute top-10 right-10 flex">
         <form onSubmit={handleSearchSubmit}>
           <input
             type="text"

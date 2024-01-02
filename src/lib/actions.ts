@@ -1,5 +1,6 @@
 import { db,complaintTable,clientTable } from "@/lib/drizzle";
-import { eq } from "drizzle-orm";
+import { eq,sql } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
 export async function getUser() {
   try {
@@ -22,8 +23,8 @@ export async function getComplaints() {
   try {
     const res = await db.select().from(complaintTable);
     const Items = res.map((item) => ({
-      _id: item.complaint_id,
       user_id: item.user_id,
+      complaint_id:item.complaint_id,
       title: item.title,
       description: item.description,
       action: item.action,
@@ -41,7 +42,7 @@ export async function getSpecificComplaint(mid:number) {
       .from(complaintTable)
       .where(eq(complaintTable.user_id, mid));
     const Items = res.map((item: any) => ({
-      _id: item.complaint_id,
+      complaint_id: item.complaint_id,
       username: item.user_id,
       title: item.title,
       description: item.description,
