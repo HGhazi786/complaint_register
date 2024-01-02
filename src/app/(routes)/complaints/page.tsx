@@ -4,10 +4,10 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className="xl:py-20 lg:py-20 flex flex-col space-y-10 xl:mx-10 lg:mx-10 items-center">
-      <Filters />
+    <div className="flex flex-col justify-between relative my-28 mx-5">
       <h2 className="text-heading1-bold">Complaints</h2>
-      <div className="overflow-x-scroll">
+      <Filters />
+      <div className='shadow-lg rounded-3xl overflow-x-auto'>
         <ComplientTable />
       </div>
     </div>

@@ -5,12 +5,11 @@ import { DeleteComplaint } from '../shared/deleteEntry';
 
 export default async function ComplientTable() {
   const res = await getComplaints()
-  console.log(res)
+  
   const data = res
   return (
-    <div className="rounded-3xl relative bg-clip-border flex flex-col w-full h-full">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
-        <thead className="text-xs uppercase bg-gray-800 text-gray-100">
+    <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl w-[900px]">
+        <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl overflow-x-scroll">
           <tr>
             <th scope="col" className="px-6 py-3">
               user Id
@@ -67,8 +66,7 @@ export default async function ComplientTable() {
           }
         </tbody>
       </table>
-    </div>
-  );
+    );
 }
 
 export function Status(status:any){
