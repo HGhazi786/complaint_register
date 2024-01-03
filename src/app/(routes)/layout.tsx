@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import SideBar from "@/components/shared/sidebar";
 import Footer from "@/components/shared/Footer";
 import SearchComponent from "@/components/shared/search";
+import Terms from "@/components/shared/terms";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white max-w-[1920px] max-h-screen">
-          <SearchComponent />
-        <div className="flex">
+        <SearchComponent/>
+        <div className="grid xl:grid-cols-[15rem,1fr] lg:grid-cols-[15rem,1fr]">
           <SideBar />
           <main className="flex flex-col justify-center items-center">
             {children}
+            <Toaster position="top-center" reverseOrder={false} />
           </main>
         </div>
+        <Terms/>
         <Footer />
       </body>
     </html>

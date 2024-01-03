@@ -5,17 +5,23 @@ import React from 'react'
 export default async function Page({ params }: { params: { query: string } }) {
   const res = await getUser()
 
+function removeSpaces(inputString: string) {
+  // Use trim to remove leading and trailing spaces, and then replace inner spaces
+  var stringWithoutSpaces = inputString.trim().replace(/\s/g, "");
+
+  return stringWithoutSpaces;
+}
+
   function filterByUsername(data:any, username:string) {
-    return data.filter((item: any) => item.username.toLowerCase() === username);
+    return data.filter((item: any) => removeSpaces(item.username.toLowerCase()) === username);
 }
 
   const name= params.query
   const raw = res;
   const data = filterByUsername(raw, name.toLowerCase());
-  
   return (
-    <div className="relative my-28 rounded-xl bg-clip-border flex flex-col w-full h-full">
-      <table className="shadow-2xl shadow-gray-200 z-50 text-sm w-full text-left rtl:text-right text-gray-800 min-w-max">
+    <div className="xl:m-auto lg:m-auto mt-32 rounded-3xl shadow-2xl overflow-x-auto">
+      <table className="text-sm w-[1000px] table-auto text-left rtl:text-right text-gray-800">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -28,43 +34,60 @@ export default async function Page({ params }: { params: { query: string } }) {
               Date of Installation
             </th>
             <th scope="col" className="px-6 py-3">
-              Delete
+              Detail
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Register Complaint
             </th>
           </tr>
         </thead>
         <tbody className="glassmorphism">
-          {data.map((item: any) => (
-            <tr
-              key={item.user_id}
-              className=" border-b border-gray-700 rounded-3xl hover:bg-gray-600"
-            >
-              <th
-                scope="row"
-                className="flex items-center px-6 py-4 whitespace-nowrap text-white"
+          {
+            // @ts-ignore
+            data?.map((item: clieent) => (
+              <tr
+                key={item.user_id}
+                className=" border-b border-gray-700 rounded-3xl hover:bg-gray-600"
               >
-                <div className="ps-3">
-                  <div className="text-base text-black font-semibold">
-                    {item.username}
-                  </div>
-                  <div className="font-normal text-gray-500">{item.email}</div>
-                </div>
-              </th>
-              <td className="px-6 py-4">{item.system_size}</td>
-              <td className="px-6 py-4">
-                <div className="flex items-center">
-                  {String(item.date_of_installation)}
-                </div>
-              </td>
-              <td className="px-6 py-4">
-                <Link
-                  href={`/customer/${item.user_id}`}
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                <Link href={`/customer/${item.user_id}`}></Link>
+                <th
+                  scope="row"
+                  className="flex items-center px-6 py-4 whitespace-nowrap text-white"
                 >
-                  View Detail
-                </Link>
-              </td>
-            </tr>
-          ))}
+                  <div className="ps-3">
+                    <div className="text-base text-black font-semibold">
+                      {item.username}
+                    </div>
+                    <div className="font-normal text-gray-500">
+                      {item.email}
+                    </div>
+                  </div>
+                </th>
+                <td className="px-6 py-4">{item.system_size}</td>
+                <td className="px-6 py-4">
+                  <div className="flex items-center">
+                    {String(item.date_of_installation)}
+                  </div>
+                </td>
+                <td className="px-6 py-4">
+                  <Link
+                    href={`/customer/${item.user_id}`}
+                    className="font-medium flex-nowrap text-white text-small-semibold bg-gray-900 px-4 py-2 hover:bg-gray-700 rounded-full"
+                  >
+                    Details
+                  </Link>
+                </td>
+                <td className="px-6 py-4">
+                  <Link
+                    href={`/createComplaint/${item.user_id}`}
+                    className="font-medium bg-gray-900 px-4 py-2 text-small-regular text-white rounded-full"
+                  >
+                    Add New
+                  </Link>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>

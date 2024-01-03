@@ -1,4 +1,5 @@
 "use client";
+import { getSpecificUser } from "@/lib/actions";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -8,6 +9,16 @@ interface mid{
 }
 
 function ComplaintForm(props:mid) {
+  async function checkForInvoice(id: number) {
+    const ures = await getSpecificUser(id);
+    const dateofInstallation = ures[0].date_of_installation;
+    const currentDate = new Date();
+    // @ts-ignore
+    const timediff = currentDate.getTime() - dateofInstallation?.getTime();
+    const millisecondsInOneYear = 365 * 24 * 60 * 60 * 1000;
+    const isGreaterThan = timediff > millisecondsInOneYear;
+    return isGreaterThan;
+  }
   const {
     register,
     handleSubmit,
@@ -15,7 +26,8 @@ function ComplaintForm(props:mid) {
   } = useForm();
 
   const onSubmit = async(data:any) => {
-     // Handle form submission here
+    const invoice = await checkForInvoice(props._id); 
+    // Handle form submission here
      const apiPost=async ()=>{const response = await fetch("/api/complaints/", {
        method: "POST",
        headers: { "Content-Type": "application/json" },
@@ -24,6 +36,7 @@ function ComplaintForm(props:mid) {
          user_id: props._id,
          title: data.title,
          description: data.description,
+         invoice_required:invoice
        }),
      });}
      toast.promise(apiPost(), {

@@ -26,6 +26,7 @@ function TakeAction(props: mid) {
           complaint_id: props._id,
           action: data.action,
           status: data.status,
+          payment_status:data.payment_status,
         }),
       });
     };
@@ -42,17 +43,28 @@ function TakeAction(props: mid) {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
-        <label>Status:</label>
-        <input
-          id="status"
-          type="checkbox"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
-          {...register("status", { required: true })}
-        />
+        <div className="flex space-x-5">
+          <label>Status:</label>
+          <input
+            id="status"
+            type="checkbox"
+            className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
+            {...register("status", { required: true })}
+          />
+        </div>
+        <div className="flex">
+          <label>Payment:</label>
+          <input
+            id="paymentstatus"
+            type="checkbox"
+            className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
+            {...register("paymentstatus", { required: true })}
+          />
+        </div>
         <label>Action:</label>
         <textarea
           id="action"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
+          className="mt-1 p-1 w-72 text-gray-400 font-sans focus:ring-0 block bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
           {...register("action", { required: true })}
         />
       </div>

@@ -17,7 +17,18 @@ export default function ComplaintCard(props:complaint) {
       </div>
       <p className="text-gray-600 text-base-medium">{props.desc}</p>
       <div className=" flex justify-between rounded-full">
-        <Status status={props.status}/>
+        {
+          // @ts-ignore
+          props.status === "true" ? (
+            <div className="flex text-green-500 text-body-bold items-center">
+              Resolved
+            </div>
+          ) : (
+            <div className="flex text-rose-700 text-body-bold items-center">
+              Pending
+            </div>
+          )
+        }
         <Link
           href={`/Complaint_Action/${props.complaintId}`}
           className="px-2 py-1 rounded-full bg-black text-white"
@@ -33,18 +44,3 @@ interface sta{
   status:boolean
 }
 
-export function Status(props:sta) {
-  if (props.status == true) {
-    return (
-      <div className="flex text-green-300 text-body-bold items-center">
-        Resolved
-      </div>
-    );
-  } else {
-    return (
-      <div className="flex text-rose-700 text-body-bold items-center">
-        Pending
-      </div>
-    );
-  }
-}

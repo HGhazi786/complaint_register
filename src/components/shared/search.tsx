@@ -5,7 +5,6 @@ import { redirect, useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
 
 const SearchComponent = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   
 
@@ -15,7 +14,6 @@ const SearchComponent = () => {
 
   const handleSearchSubmit = (event: any) => {
     event.preventDefault();
-    setIsSearchOpen(false);
     // Perform search logic with the searchQuery value
     console.log("Search query:", searchQuery);
   };
@@ -26,6 +24,13 @@ let path
   else{
     path=searchQuery
   }
+  function removeSpaces(inputString:string) {
+    // Use trim to remove leading and trailing spaces, and then replace inner spaces
+    var stringWithoutSpaces = inputString.trim().replace(/\s/g, "");
+
+    return stringWithoutSpaces;
+  }
+  path=removeSpaces(path)
   return (
     <div className="absolute top-10 right-10 flex">
         <form onSubmit={handleSearchSubmit}>
@@ -37,7 +42,7 @@ let path
             onChange={handleInputChange}
           />
         </form>
-        <Link href={`/search/${searchQuery}`} className="text-lg bg-black text-white py-2 px-2 rounded-r-full">
+        <Link href={`/search/${path}`} className="text-lg bg-black text-white py-2 px-2 rounded-r-full">
           <FaSearch />
         </Link>
     </div>

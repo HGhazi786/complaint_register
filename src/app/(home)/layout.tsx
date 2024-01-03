@@ -4,6 +4,7 @@ import "../globals.css";
 import SideBar from "@/components/shared/sidebar";
 import Footer from "@/components/shared/Footer";
 import SearchComponent from "@/components/shared/search";
+import Terms from "@/components/shared/terms";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-white max-w-[1920] max-h-screen">
         <SearchComponent />
-        <div className="flex">
+        <div className="grid grid-cols-[15rem,1fr]">
           <SideBar />
-          <main className="flex flex-col justify-center items-center">{children}</main>
+          <main className="flex flex-col justify-center items-center">
+            {children}
+          </main>
         </div>
+        <Terms />
         <Footer />
       </body>
     </html>

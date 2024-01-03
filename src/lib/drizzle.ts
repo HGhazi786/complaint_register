@@ -19,6 +19,8 @@ export const complaintTable = pgTable("complaints", {
   description: text("description"),
   user_id: integer("user_id").references(() => clientTable.user_id),
   action: text("action"),
+  invoice_required: boolean("invoice_required"),
+  payment_status: boolean("payment_status"),
   status: boolean("status"),
   created_at: timestamp("created_at"),
   updated_at: timestamp("updated_at"),

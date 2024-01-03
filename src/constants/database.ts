@@ -4,6 +4,8 @@ interface complaaint {
   title: string;
   description: string;
   action: string;
+  invoice_required:boolean
+  payment_status:boolean
   status: boolean;
 }
 interface clieent {
