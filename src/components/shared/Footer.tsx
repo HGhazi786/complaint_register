@@ -21,7 +21,7 @@ function Footer() {
             <Link
               href={link.route}
               key={link.label}
-              className={`bottombar_link ${isActive && "bg-blue"}`}
+              className={`bottombar_link ${isActive && "bg-green-400"}`}
             >
               <Image
                 src={link.imgURL}
@@ -31,7 +31,7 @@ function Footer() {
                 className="object-contain"
               />
 
-              <p className="text-subtle-medium text-light-1 max-sm:hidden">
+              <p className="text-subtle-medium text-black max-sm:hidden">
                 {link.label.split(/\s+/)[0]}
               </p>
             </Link>

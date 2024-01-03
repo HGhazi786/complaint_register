@@ -3,6 +3,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast  from "react-hot-toast";
 
+
+
 function UserForm() {
    
   const {
@@ -12,6 +14,14 @@ function UserForm() {
   } = useForm();
 
   const onSubmit = async (data: any) => {
+    const dateofInstallation = new Date(data.date_of_installation);
+
+    const currentDate = new Date();
+    const timediff = currentDate.getTime() - dateofInstallation.getTime();
+    const millisecondsInOneYear = 365 * 24 * 60 * 60 * 1000;
+    const isGreaterThan = timediff > millisecondsInOneYear;
+    console.log(isGreaterThan)
+    const inv = isGreaterThan;
     // Handle form submission here
     const apiPost=async()=>{const response = await fetch("/api/user/", {
       method: "POST",
@@ -22,7 +32,8 @@ function UserForm() {
         email: data.email,
         contact_details: data.contact_details,
         system_size:data.system_size,
-        date_of_installation:data.date_of_installation
+        date_of_installation:data.date_of_installation,
+        invoice_required:inv
       }),
     });}
     toast.promise(apiPost(), {

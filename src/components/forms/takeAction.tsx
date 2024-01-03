@@ -23,10 +23,10 @@ function TakeAction(props: mid) {
         headers: { "Content-Type": "application/json" },
         cache: "no-cache",
         body: JSON.stringify({
+          pts: data.payment,
           complaint_id: props._id,
           action: data.action,
           status: data.status,
-          payment_status:data.payment_status,
         }),
       });
     };
@@ -55,10 +55,10 @@ function TakeAction(props: mid) {
         <div className="flex">
           <label>Payment:</label>
           <input
-            id="paymentstatus"
+            id="payment"
             type="checkbox"
             className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
-            {...register("paymentstatus", { required: true })}
+            {...register("payment", { required: true })}
           />
         </div>
         <label>Action:</label>

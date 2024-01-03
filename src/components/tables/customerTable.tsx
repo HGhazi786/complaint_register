@@ -7,6 +7,9 @@ import { DeleteUser } from "../shared/deleteEntry";
 export default async function CustomerTable() {
   const res = await getUser();
   const data = res;
+  
+
+
 return (
   <table className="text-sm w-full text-left rtl:text-right text-gray-800">
     <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl">

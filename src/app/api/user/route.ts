@@ -36,7 +36,8 @@ export const POST = async (request: NextRequest) => {
         email: req.email,
         contact_details: req.contact_details,
         system_size:req.system_size,
-        date_of_installation:req.date_of_installation
+        invoice_required:req.invoice_required,
+        date_of_installation:req.date_of_installation,
       })
       .returning();
     return NextResponse.json({ res });

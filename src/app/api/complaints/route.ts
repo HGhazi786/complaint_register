@@ -12,6 +12,7 @@ export const GET = async () => {
       description: item.description,
       action: item.action,
       status: item.status,
+      payment_status:item.payment_status
     }));
     return NextResponse.json(Items);
   } catch (error) {
@@ -33,8 +34,8 @@ export const POST = async (request: NextRequest) => {
         user_id: req.user_id,
         title: req.title,
         description:req.description,
-        invoice_required:req.invoice_required,
         status:false,
+        payment_status:false,
       })
       .returning();
     return NextResponse.json({ res });
@@ -47,9 +48,8 @@ export const POST = async (request: NextRequest) => {
 export const PUT = async (request: NextRequest) => {
   const req = await request.json();
   console.log(req)
-
   try {
-    const res = await db.update(complaintTable).set({action:req.action, status:req.status, payment_status:req.payment_status}).where(eq(
+    const res = await db.update(complaintTable).set({action:req.action, status:req.status, payment_status:req.pts}).where(eq(
         complaintTable.complaint_id, req.complaint_id
       )).returning();
 

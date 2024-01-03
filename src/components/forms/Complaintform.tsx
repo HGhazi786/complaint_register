@@ -9,16 +9,7 @@ interface mid{
 }
 
 function ComplaintForm(props:mid) {
-  async function checkForInvoice(id: number) {
-    const ures = await getSpecificUser(id);
-    const dateofInstallation = ures[0].date_of_installation;
-    const currentDate = new Date();
-    // @ts-ignore
-    const timediff = currentDate.getTime() - dateofInstallation?.getTime();
-    const millisecondsInOneYear = 365 * 24 * 60 * 60 * 1000;
-    const isGreaterThan = timediff > millisecondsInOneYear;
-    return isGreaterThan;
-  }
+  
   const {
     register,
     handleSubmit,
@@ -26,24 +17,26 @@ function ComplaintForm(props:mid) {
   } = useForm();
 
   const onSubmit = async(data:any) => {
-    const invoice = await checkForInvoice(props._id); 
+    
     // Handle form submission here
-     const apiPost=async ()=>{const response = await fetch("/api/complaints/", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       cache: "no-cache",
-       body: JSON.stringify({
-         user_id: props._id,
-         title: data.title,
-         description: data.description,
-         invoice_required:invoice
-       }),
-     });}
+     const apiPost=async ()=>{
+      const response = await fetch("/api/complaints/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify({
+        user_id: props._id,
+        title: data.title,
+        description: data.description,
+      }),
+     });
+    }
      toast.promise(apiPost(), {
        loading: "Registering...",
        success: "Complaint registered successfully",
        error: "Failed to registered Complaint",
      });
+     
   };
 
   return (

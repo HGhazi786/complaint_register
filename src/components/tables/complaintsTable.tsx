@@ -6,6 +6,7 @@ import { DeleteComplaint } from '../shared/deleteEntry';
 export default async function ComplientTable() {
   const res = await getComplaints()
   const data = res  
+
   return (
     <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
       <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl overflow-x-scroll">
@@ -67,7 +68,7 @@ export default async function ComplientTable() {
               <td className="px-6 py-4">
                 {
                   // @ts-ignore
-                  item.invoice_required == false ? (
+                  item.invoice_required === true ? (
                     <div className="flex text-green-500 text-body-bold items-center">
                       Required
                     </div>
@@ -81,13 +82,19 @@ export default async function ComplientTable() {
               <td className="px-6 py-4">
                 {
                   // @ts-ignore
-                  item.payment_status === "true" ? (
-                    <div className="flex text-green-500 text-body-bold items-center">
-                      Recieved
-                    </div>
+                  item.invoice_required === true ? (
+                    item.payment_status === true ? (
+                      <div className="flex text-green-500 text-body-bold items-center">
+                        Recieved
+                      </div>
+                    ) : (
+                      <div className="flex text-rose-700 text-body-bold items-center">
+                        Pending
+                      </div>
+                    )
                   ) : (
-                    <div className="flex text-rose-700 text-body-bold items-center">
-                      Pending
+                    <div className="flex text-gray-700 text-body-bold items-center">
+                      Not Required
                     </div>
                   )
                 }
@@ -110,7 +117,7 @@ export default async function ComplientTable() {
               </td>
             </tr>
           ))
- }
+        }
       </tbody>
     </table>
   );
