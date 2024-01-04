@@ -7,6 +7,7 @@ interface complaaint {
   invoice_required:boolean
   payment_status:boolean
   status: boolean;
+  usrname:number;
 }
 interface clieent {
   user_id: number;
@@ -15,4 +16,11 @@ interface clieent {
   contactdetails: string;
   system_size: string;
   date_of_installation: Date;
+}
+
+interface Insights {
+  Complaint: number;
+  Pending: number;
+  Payed: number;
+  Users: number;
 }

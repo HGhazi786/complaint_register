@@ -71,7 +71,7 @@
   }
 
   .leftsidebar {
-    @apply sticky left-0 top-0 z-20 flex h-[95vh] w-[250px] flex-col justify-between overflow-auto shadow-2xl  bg-emerald-400 pb-5 pt-14 max-md:hidden;
+    @apply sticky left-0 top-0 z-20 flex h-[90vh] w-[300px] flex-col justify-between overflow-auto shadow-2xl  bg-emerald-400 pb-5 pt-14 max-md:hidden;
   }
 
   .leftsidebar_link {

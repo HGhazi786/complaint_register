@@ -4,11 +4,11 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className="flex flex-col justify-between relative my-28 mx-5">
-      <h2 className="text-heading1-bold">Complaints</h2>
+    <div className="">
+      <h2 className="text-heading1-bold mt-28 mb-6 text-center">Complaints</h2>
       <Filters />
-      <div className='shadow-lg rounded-3xl overflow-x-auto'>
-        <ComplientTable />
+      <div className='shadow-lg rounded-3xl overflow-x-auto overflow-y-auto h-[60vh] w-[1000px]'>
+        <ComplientTable fltr=''/>
       </div>
     </div>
   );

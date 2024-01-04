@@ -5,6 +5,7 @@ import SideBar from "@/components/shared/sidebar";
 import Footer from "@/components/shared/Footer";
 import SearchComponent from "@/components/shared/search";
 import Terms from "@/components/shared/terms";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,15 +21,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white max-w-[1920] max-h-screen">
-        <SearchComponent />
-        <div className="grid grid-cols-[15rem,1fr]">
-          <SideBar />
-          <main className="flex flex-col justify-center items-center">
-            {children}
-          </main>
+      <body
+        className={`bg-[url('/assets/bgrd.jpg')] bg-cover rounded-3xl max-w-[1920] max-h-[95vh] overflow-hidden`}
+      >
+        <div className="glassmorphism rounded-3xl m-3 backdrop-blur-lg shadow-xl">
+          <div className="grid grid-cols-[15rem,1fr]">
+            <SearchComponent />
+            <SideBar />
+            <main className="flex flex-col justify-center items-center">
+              {children}
+              <Toaster position="top-center" reverseOrder={false} />
+            </main>
+          </div>
+          <Terms />
         </div>
-        <Terms />
         <Footer />
       </body>
     </html>

@@ -2,13 +2,16 @@
 import React from "react";
 import toast from "react-hot-toast";
 import {BsTrash3} from "react-icons/bs"
+import { useRouter } from "next/navigation";
+import { Router } from "next/router";
 
 interface idm{
 _id:number
 }
 
 export function DeleteComplaint(props:idm) {
-const deleteApi=async (id:number)=>{
+  const router=useRouter()
+  const deleteApi=async (id:number)=>{
     try {
       const response = await fetch(`/api/complaints/delete/${id}`, {
         method: "DELETE",
@@ -16,11 +19,12 @@ const deleteApi=async (id:number)=>{
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }
+    router.refresh();
   }
   async function handleDelete(id: number) {
     toast.promise(deleteApi(id), {
-      loading: "Deleting Product",
-      success: "Product Deleted Successfully",
+      loading: "Deleting item",
+      success: "Item Deleted Successfully",
       error: "Failed to Delete",
     });
 }  
@@ -28,6 +32,7 @@ return <button onClick={()=>handleDelete(props._id)}><BsTrash3 className="text-g
 }
 
 export function DeleteUser(props: idm) {
+  const router = useRouter();
   const deleteApi = async (id: number) => {
     try {
       const response = await fetch(`/api/user/delete/${id}`, {
@@ -36,11 +41,12 @@ export function DeleteUser(props: idm) {
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }
+    router.refresh();
   };
   async function handleDelete(id: number) {
     toast.promise(deleteApi(id), {
-      loading: "Deleting Product",
-      success: "Product Deleted Successfully",
+      loading: "Deleting item",
+      success: "Item Deleted Successfully",
       error: "Failed to Delete",
     });
   }

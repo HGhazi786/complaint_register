@@ -36,5 +36,6 @@ export async function middleware(request: NextRequest) {
   }
 }
 export const config = {
-  matcher: ["/", "/login", "/protected"],
+  matcher: ["/:path*", "/login" ],
 };
+// "/customers","/complaints","/createComplaint","/AddCustomer","/Complaint_Action","/search"

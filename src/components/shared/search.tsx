@@ -32,7 +32,7 @@ let path
   }
   path=removeSpaces(path)
   return (
-    <div className="absolute top-10 right-10 flex">
+    <div className="absolute top-2 z-50 right-10 flex">
         <form onSubmit={handleSearchSubmit}>
           <input
             type="text"

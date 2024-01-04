@@ -1,18 +1,37 @@
-import { getComplaints, getSpecificUser} from '@/lib/actions';
+import { getComplaints, getNewestComplaints, getOldestComplaints, getPending, getResolved} from '@/lib/actions';
 import Link from 'next/link';
 import React from 'react'
 import { DeleteComplaint } from '../shared/deleteEntry';
 
-export default async function ComplientTable() {
-  const res = await getComplaints()
-  const data = res  
+interface filter{
+  fltr:string
+}
+
+export default async function ComplientTable(props:filter) {
+  let data;
+  if (props.fltr == "pending") {
+    const res = await getPending();
+    data = res;
+  } else if (props.fltr == "resolved") {
+    const res = await getResolved();
+    data = res;
+  } else if (props.fltr == "oldest") {
+    const res = await getOldestComplaints();
+    data = res;
+  } else if (props.fltr == "resolved") {
+    const res = await getNewestComplaints();
+    data = res;
+  } else {
+    const res = await getComplaints();
+    data = res;
+  }
 
   return (
     <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
       <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl overflow-x-scroll">
         <tr>
           <th scope="col" className="px-6 py-3">
-            user Id
+            User Name
           </th>
           <th scope="col" className="px-6 py-3">
             Title
@@ -32,6 +51,9 @@ export default async function ComplientTable() {
           <th scope="col" className="px-6 py-3">
             Take Action
           </th>
+          <th scope="col" className="px-6 py-3">
+            Delete
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +72,7 @@ export default async function ComplientTable() {
                   <div className="text-base font-semibold">{item.user_id}</div>
                 </div>
               </th>
-              <td className="px-6 py-4">{item.title}</td>
+              <td className="px-6 py-4 text-gray-800">{item.title}</td>
               <td className="px-6 py-4">
                 {
                   // @ts-ignore
@@ -101,10 +123,10 @@ export default async function ComplientTable() {
               </td>
               <td className="px-6 py-4">
                 <Link
-                  href={`/customer/${item.user_id}`}
+                  href={`/customer/${item.usrname}`}
                   className="font-medium hover:underline px-4 py-2 bg-gray-900 hover:bg-gray-700 text-white rounded-full text-small-regular"
                 >
-                  View Details
+                  Details
                 </Link>
               </td>
               <td className="px-6 py-4">
@@ -114,6 +136,9 @@ export default async function ComplientTable() {
                 >
                   Action
                 </Link>
+              </td>
+              <td className="px-6 py-4">
+                <DeleteComplaint _id={item.complaint_id}/>
               </td>
             </tr>
           ))

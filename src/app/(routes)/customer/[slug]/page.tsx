@@ -6,8 +6,10 @@ import React from 'react'
 export default async function Page({params}:{params:{slug:string}}) {
   const res = await getSpecificComplaint(Number(params.slug))
   const complaintData = res
+  console.log(res)
   const resp = await getSpecificUser(Number(params.slug))
   const userData = resp;
+  console.log(resp)
   return (
     <div className="flex justify-between flex-col mt-32 xl:mt-0 lg:mt-0">
       <h2 className="text-heading2-bold">User Information</h2>

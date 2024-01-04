@@ -11,11 +11,12 @@ const SideBar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="custom-scrollbar rounded-3xl m-4 leftsidebar">
+    <section className="custom-scrollbar rounded-3xl m-5 leftsidebar">
       <div className="flex w-full flex-1 flex-col gap-6 px-6">
         <h1 className="text-heading1-bold flex justify-center mb-10 text-black">
           CompliX
         </h1>
+        <Image src={'/logo.png'} width={500} height={500} alt="Logo of website"/>
         {sidebarLinks.map((link) => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
