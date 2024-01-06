@@ -7,7 +7,7 @@ export default function page({params}:{params:{filter:string}}) {
     <div className="">
       <h2 className="text-heading1-bold text-center mt-32 mb-10">Complaints</h2>
       <Filters />
-      <div className="shadow-lg rounded-3xl overflow-x-auto w-[1000px] mb-2 overflow-y-auto h-[60vh]">
+      <div className="h-[44vh] sm:w-[580px] md:w-full xs:w-[380px] w-[300px] xl:w-full lg:w-full scroll-smooth overflow-y-auto overflow-x-auto mx-2 mt-5 mb-14 xl:mb-0 lg:mb-0 rounded-3xl shadow-xl">
         <ComplientTable fltr={params.filter} />
       </div>
     </div>

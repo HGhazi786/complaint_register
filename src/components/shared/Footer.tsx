@@ -21,7 +21,7 @@ function Footer() {
             <Link
               href={link.route}
               key={link.label}
-              className={`bottombar_link ${isActive && "bg-green-400"}`}
+              className={`bottombar_link ${isActive && "bg-sky-400"}`}
             >
               <Image
                 src={link.imgURL}

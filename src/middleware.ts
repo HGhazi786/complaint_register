@@ -6,9 +6,6 @@ export async function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
 
   const headersToken = request.cookies.get("token")?.value;
-
-  console.log("Token", headersToken);
-
   try {
     if (pathname === "/login" || pathname === "/register") {
       if (headersToken) return NextResponse.redirect(`${origin}`);
@@ -21,8 +18,6 @@ export async function middleware(request: NextRequest) {
       headersToken,
       new TextEncoder().encode(getJWTSecretKey())
     );
-
-    console.log("Verify Auth", verifyToken);
     if (verifyToken) {
       return NextResponse.next();
     }
@@ -36,6 +31,15 @@ export async function middleware(request: NextRequest) {
   }
 }
 export const config = {
-  matcher: ["/:path*", "/login" ],
+  matcher: [
+    "/",
+    "/login",
+    "/customers",
+    "/complaints",
+    "/createComplaint",
+    "/AddCustomer",
+    "/Complaint_Action",
+    "/search",
+  ],
 };
-// "/customers","/complaints","/createComplaint","/AddCustomer","/Complaint_Action","/search"
+// 

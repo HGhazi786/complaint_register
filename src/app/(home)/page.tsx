@@ -7,12 +7,16 @@ import Link from 'next/link';
 export default async function Home() {
   const table = await getPending()
   return (
-    <div className=" xl:w-[1000px] lg:[800px] flex flex-col justify-center p-auto m-auto">
-      <div className="grid mt-5 grid-cols-1 xl:grid-cols-[40rem,1fr] lg:grid-cols-2 gap-10">
+    <div className=" xl:w-[1000px] lg:[800px] mt-28 xl:mt-0 lg:mt-0">
+      <div className="grid mt-5 grid-cols-1 xl:grid-cols-[42rem,1fr] lg:grid-cols-[35rem,1fr] gap-10">
         <div>
           <div className="p-5 rounded-3xl">
-            <h1 className="text-heading1-bold">Complaint Register</h1>
-            <h2 className="text-heading3-bold">Welcome Back Administrator</h2>
+            <h1 className="text-heading1-bold text-center xl:text-left lg-text-left">
+              Complaint Register
+            </h1>
+            <h2 className="text-heading3-bold text-center xl:text-left lg-text-left">
+              Welcome Back Administrator
+            </h2>
             <p className="text-body-normal">
               1. To add customer click on add customer
             </p>
@@ -24,17 +28,24 @@ export default async function Home() {
               name
             </p>
             <p className="text-body-normal">
-              4. If the customer appear then click on add new complaint
+              4. If the customer appear then click on add new complaint fill the
+              form
             </p>
-            <p className="text-body-normal">5. Fill the form and submit</p>
+            <p className="text-body-normal">
+              5. To take an action on a complaint click on complaints
+            </p>
+            <p className="text-body-normal">
+              6. Find the complaint you are looking for click on action fill the
+              form
+            </p>
           </div>
         </div>
-        <div className={""}>
+        <div>
           <Insights />
         </div>
       </div>
-      <div className="w-full h-[44vh] scroll-smooth overflow-y-auto mx-2 mt-5 rounded-3xl shadow-xl">
-        <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl w-full">
+      <div className="h-[44vh] sm:w-[580px] md:w-full xs:w-[380px] w-[300px] xl:w-full lg:w-full scroll-smooth overflow-y-auto overflow-x-auto mx-2 mt-5 mb-14 xl:mb-0 lg:mb-0 rounded-3xl shadow-xl">
+        <table className="text-sm text-left rtl:text-right text-gray-400 rounded-3xl">
           <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl overflow-x-scroll">
             <tr>
               <th scope="col" className="px-6 py-3">
@@ -81,7 +92,7 @@ export default async function Home() {
                       </div>
                     </div>
                   </th>
-                  <td className="px-6 py-4">{item.title}</td>
+                  <td className="px-6 py-4 text-gray-800">{item.title}</td>
                   <td className="px-6 py-4">
                     {
                       // @ts-ignore

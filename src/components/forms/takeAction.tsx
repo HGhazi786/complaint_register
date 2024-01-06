@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
 
 interface mid {
   _id: number;
@@ -14,8 +15,10 @@ function TakeAction(props: mid) {
     formState: { errors },
   } = useForm();
 
+  const searchParams = useSearchParams();
+  console.log(props._id)
+  const search:boolean = Boolean(searchParams.get("payment"));
   const onSubmit = async (data:any) => {
-    console.log(data);
     // Handle form submission here
     const apiPost = async () => {
       const response = await fetch("/api/complaints/", {
@@ -47,6 +50,7 @@ function TakeAction(props: mid) {
           <label>Status:</label>
           <input
             id="status"
+            disabled={search}
             type="checkbox"
             className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
             {...register("status", { required: true })}
@@ -58,7 +62,7 @@ function TakeAction(props: mid) {
             id="payment"
             type="checkbox"
             className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full bg-transparent border border-b-2 focus:outline-none focus:ring-none border-b-emerald-900 border-transparent shadow-sm"
-            {...register("payment", { required: true })}
+            {...register("payment")}
           />
         </div>
         <label>Action:</label>

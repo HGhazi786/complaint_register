@@ -131,7 +131,7 @@ export default async function ComplientTable(props:filter) {
               </td>
               <td className="px-6 py-4">
                 <Link
-                  href={`/Complaint_Action/${item.complaint_id}`}
+                  href={`/Complaint_Action/${item.complaint_id}?payment=${item.invoice_required}`}
                   className="font-medium hover:bg-gray-700 text-white px-4 py-2 bg-gray-900 rounded-full text-small-regular"
                 >
                   Action

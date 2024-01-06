@@ -23,8 +23,8 @@ return (
         By Date Latest
       </Link>
     </div>
-    <div className="shadow-2xl shadow-gray-200 rounded-3xl overflow-x-auto w-[1000px] mb-2 overflow-y-auto h-[60vh]">
-      <CustomerTable fltr={params.filter}/>
+    <div className="h-[44vh] sm:w-[580px] md:w-full xs:w-[380px] w-[300px] xl:w-full lg:w-full scroll-smooth overflow-y-auto overflow-x-auto mx-2 mt-5 mb-14 xl:mb-0 lg:mb-0 rounded-3xl shadow-xl">
+      <CustomerTable fltr={params.filter} />
     </div>
   </div>
 );

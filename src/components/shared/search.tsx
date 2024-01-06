@@ -32,19 +32,22 @@ let path
   }
   path=removeSpaces(path)
   return (
-    <div className="absolute top-2 z-50 right-10 flex">
-        <form onSubmit={handleSearchSubmit}>
-          <input
-            type="text"
-            className="px-4 py-1 border border-gray-300 rounded-l-full shadow-md focus:outline-none focus:ring-none text-black"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleInputChange}
-          />
-        </form>
-        <Link href={`/search/${path}`} className="text-lg bg-black text-white py-2 px-2 rounded-r-full">
-          <FaSearch />
-        </Link>
+    <div className="absolute top-24 xl:top-2 lg:top-2 z-50 xl:right-10 lg:right-10 right-5 flex">
+      <form onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          className="px-4 py-1 border border-gray-300 rounded-l-full shadow-md focus:outline-none focus:ring-none text-black"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+      </form>
+      <Link
+        href={`/search/${path}`}
+        className="text-lg bg-black text-white py-2 px-2 rounded-r-full"
+      >
+        <FaSearch />
+      </Link>
     </div>
   );
 };

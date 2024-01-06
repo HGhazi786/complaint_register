@@ -20,7 +20,7 @@ function removeSpaces(inputString: string) {
   const raw = res;
   const data = filterByUsername(raw, name.toLowerCase());
   return (
-    <div className="xl:m-auto lg:m-auto mt-32 rounded-3xl shadow-2xl overflow-x-auto">
+    <div className="h-[44vh] sm:w-[580px] md:w-full xs:w-[380px] w-[300px] xl:w-full lg:w-full scroll-smooth overflow-y-auto overflow-x-auto mx-2 mt-5 mb-14 xl:mb-0 lg:mb-0 rounded-3xl shadow-xl">
       <table className="text-sm w-[1000px] table-auto text-left rtl:text-right text-gray-800">
         <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl">
           <tr>
@@ -47,7 +47,7 @@ function removeSpaces(inputString: string) {
             data?.map((item: clieent) => (
               <tr
                 key={item.user_id}
-                className=" border-b border-gray-700 rounded-3xl hover:bg-gray-600"
+                className=" border-b border-gray-700 rounded-3xl hover:bg-gray-200"
               >
                 <Link href={`/customer/${item.user_id}`}></Link>
                 <th

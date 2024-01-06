@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-[url('/assets/bgrd.jpg')] bg-cover rounded-3xl max-w-[1920] max-h-screen backdrop-blur-xl overflow-hidden`}
+        className={`xl:bg-[url('/assets/bgrd.jpg')] lg:bg-[url('/assets/bgrd.jpg')] bg-center bg-cover backdrop-blur-md rounded-3xl max-w-[1920px]`}
       >
-        <div className="glassmorphism rounded-3xl m-3 backdrop-blur-lg shadow-xl">
-          <div className="grid grid-cols-[15rem,1fr]">
+        <div className="glassmorphism rounded-3xl xl:m-3 lg:m-3 shadow-xl">
+          <div className="grid xl:grid-cols-[15rem,1fr] lg:grid-cols-[15rem,1fr]">
             <SearchComponent />
             <SideBar />
             <main className="flex flex-col justify-center items-center">
