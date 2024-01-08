@@ -54,7 +54,7 @@ function UserForm() {
           <input
             type="text"
             id="username"
-            className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 focus:outline-none focus:ring-none block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+            className="mt-1 p-1 font-sans focus:ring-0 focus:outline-none focus:ring-none block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
             {...register("username", { required: true })}
           />
         </div>
@@ -63,7 +63,7 @@ function UserForm() {
           <input
             type="email"
             id="email"
-            className="mt-1 p-1 text-gray-400 font-sans focus:outline-none focus:ring-none focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+            className="mt-1 p-1 font-sans focus:outline-none focus:ring-none focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
             {...register("email", { required: true })}
           />
         </div>
@@ -73,16 +73,16 @@ function UserForm() {
         <input
           type="text"
           id="contact_details"
-          className="mt-1 p-1 text-gray-400 focus:outline-none focus:ring-none font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+          className="mt-1 p-1 focus:outline-none focus:ring-none font-sans focus:ring-0 block w-full text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
           {...register("contact_details", { required: true })}
         />
       </div>
       <div className="block font-medium">
         <label>System Size:</label>
         <input
-          type="text"
+          type="number"
           id="system_size"
-          className="mt-1 p-1 text-gray-400 font-sans focus:ring-0 block w-full focus:outline-none focus:ring-none text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
+          className="mt-1 p-1 font-sans focus:ring-0 block w-full focus:outline-none focus:ring-none text-brown bg-transparent border border-b-2 border-b-emerald-900 border-transparent shadow-sm"
           {...register("system_size", { required: true })}
         />
       </div>

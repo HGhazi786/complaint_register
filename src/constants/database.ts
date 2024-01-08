@@ -14,7 +14,7 @@ interface clieent {
   username: string;
   email: string;
   contactdetails: string;
-  system_size: string;
+  system_size: number;
   date_of_installation: Date;
 }
 

@@ -7,7 +7,7 @@ export const clientTable = pgTable("client", {
   username: varchar("username", { length: 55 }).notNull(),
   email: varchar("email", { length: 255 }).notNull(),
   contact_details: varchar("contact_details", { length: 255 }),
-  system_size: varchar("system_size", { length: 50 }),
+  system_size: integer("system_size_kw"),
   invoice_required: boolean("invoice_required"),
   date_of_installation: date("date_of_installation"),
   created_at: timestamp("created_at"),
