@@ -6,7 +6,7 @@ interface user {
     name:string
     email:string
     contact_details:string
-    systemSize:string
+    systemSize:number
     date_of_installation:Date
 }
 
