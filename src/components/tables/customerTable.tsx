@@ -24,7 +24,7 @@ export default async function CustomerTable(props:filter) {
   }
 
 return (
-  <table className="text-sm text-left rtl:text-right text-gray-800">
+  <table className="text-sm text-left rtl:text-right text-gray-800 w-full">
     <thead className="text-xs uppercase bg-gray-800 text-gray-100 rounded-3xl">
       <tr>
         <th scope="col" className="px-6 py-3">
@@ -32,9 +32,6 @@ return (
         </th>
         <th scope="col" className="px-6 py-3">
           System Size
-        </th>
-        <th scope="col" className="px-6 py-3">
-          Date of Installation
         </th>
         <th scope="col" className="px-6 py-3">
           Detail
@@ -68,11 +65,6 @@ return (
               </div>
             </th>
             <td className="px-6 py-4 text-gray-800">{item.system_size}</td>
-            <td className="px-6 py-4">
-              <div className="flex items-center">
-                {String(item.date_of_installation)}
-              </div>
-            </td>
             <td className="px-6 py-4">
               <Link
                 href={`/customer/${item.user_id}`}

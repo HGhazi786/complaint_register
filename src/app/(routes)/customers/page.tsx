@@ -5,10 +5,10 @@ import React from 'react'
 export default function page() {
   return (
     <div className="">
-      <h2 className="mt-28 text-heading1-bold font-extrabold mb-5 text-center">
+      <h2 className="mt-36 text-heading1-bold font-extrabold mb-5 text-center">
         Customers
       </h2>
-      <div className="flex grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 mb-5 space-x-10">
+      <div className="mx-2 flex mb-5 xl:space-x-10 lg:space-x-10 space-x-2">
         <Link
           href={"/customers/oldest"}
           className="px-4 py-2 rounded-full bg-gray-900 text-white shadow-lg"
