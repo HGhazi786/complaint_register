@@ -26,4 +26,25 @@ export const complaintTable = pgTable("complaints", {
   updated_at: timestamp("updated_at"),
 });
 
+export const proposalTable = pgTable("proposal", {
+  refno : integer("refno"),
+  name : varchar("name",{length:55}),
+  address: varchar("address",{length:55}),
+  city: varchar("city",{length:55}),
+  phno:integer("phno"),
+  panels:integer("panels"),
+  pnlsize:integer("pnlsize"),
+  sys_size :integer("sys_size"),
+  inv_size :integer("inv_size"),
+  pnl_brand : varchar("pnl_brand",{length:55}),
+  inv_brand : varchar("inv_brand",{length:55}),
+  aepl_charges :integer("aepl_charges"),
+  sub_charges :integer("sub_charges"),
+  discount :integer("discount"),
+  total :integer("total"),
+  cust_struct : varchar("cust_struct",{length:55}),
+  warranty :integer("warranty"),
+  tilt :integer("tilt")
+});
+
 export const db = drizzle(sql);
