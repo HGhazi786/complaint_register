@@ -6,7 +6,6 @@ import toast  from "react-hot-toast";
 
 
 function UserForm() {
-   
   const {
     register,
     handleSubmit,
@@ -41,6 +40,7 @@ function UserForm() {
       success: "User registered successfully",
       error: "Failed to registered User",
     });
+  
   };
 
   return (
@@ -106,3 +106,7 @@ function UserForm() {
 }
 
 export default UserForm;
+
+
+
+

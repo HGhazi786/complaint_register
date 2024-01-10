@@ -1,10 +1,12 @@
 import { DeleteComplaint } from '@/components/shared/deleteEntry';
 import Insights from '@/components/shared/insights';
 import { getInsights, getPending } from '@/lib/actions';
+import edit_docx from '@/lib/edit_doc';
 import Image from 'next/image'
 import Link from 'next/link';
 
 export default async function Home() {
+  
   const table = await getPending()
   return (
     <div className=" xl:w-[1000px] lg:[800px] mt-28 xl:mt-0 lg:mt-0">
